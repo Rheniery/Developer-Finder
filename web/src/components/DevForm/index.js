@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 function DevForm({onSubmit}){
-
-    const [github_usarname, setGithubUsername] = useState('');
+    const [github_username, setGithubUsername] = useState('');
     const [techs, setTechs] = useState('');
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
@@ -25,10 +24,10 @@ function DevForm({onSubmit}){
       }, []);
 
       async function handleSubmit(e){
-          e.precentDefault();
+          e.preventDefault();
 
           await onSubmit({
-            github_usarname,
+            github_username,
             techs,
             latitude,
             longitude
@@ -42,7 +41,7 @@ function DevForm({onSubmit}){
         <form onSubmit={handleSubmit}>
         <div className="input-block">
         <label htmlFor="github_username">GitHub Username</label>
-        <input type="text" name="github_username" id="github_username" required value={github_usarname} onChange={e => setGithubUsername(e.target.value)}/>
+        <input type="text" name="github_username" id="github_username" required value={github_username} onChange={e => setGithubUsername(e.target.value)}/>
         </div>
 
         <div className="input-block">
@@ -60,7 +59,7 @@ function DevForm({onSubmit}){
         </div>
         </div>
 
-      <button type="submit">Salvar</button>
+      <button type="submit">Submit</button>
       </form>
     );
 }

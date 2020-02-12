@@ -44,6 +44,8 @@ module.exports = {
                 techsArray,
             )
             
+            console.log(sendSocketMessageTo);
+
             sendMessage(sendSocketMessageTo, 'new-dev', dev);
 
         }

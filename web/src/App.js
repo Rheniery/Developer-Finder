@@ -15,6 +15,7 @@ import DevForm from './components/DevForm';
 
 function App() {
   const [devs, setDevs] = useState([]);
+
   useEffect(()=> {
     async function loadDevs(){
       const response = await api.get('/devs');
@@ -25,15 +26,16 @@ function App() {
   }, []);
 
   async function handledAddDev(data){
+    console.log(data);
     const response = await api.post('/devs', data);
-
+    console.log(response);
     setDevs([...devs, response.data]);
   }
 
   return (
     <div id="app">
       <aside>
-        <strong>Cadastrar</strong>
+        <strong>Register</strong>
         <DevForm onSubmit={handledAddDev} />
       </aside>
       <main>

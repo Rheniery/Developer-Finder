@@ -16,24 +16,21 @@ const adressMongo = process.env.MONGO_ADR;
 const app = express();
 const server = http.Server(app);
 
-console.log(PORT);
-console.log(loginMongo);
-
 setupWebsocket(server);
 
-mongoose.connect(`mongodb+srv://${loginMongo}:${passwordMongo}@${adressMongo}`,{
+mongoose.connect('mongodb+srv://rheniery:ervilha@cluster0-9hwyk.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
-//entender requisição no formato json
 app.use(cors({origin: 'http://localhost:3000'}));
+//understand the requisitions in json format
 app.use(express.json());
 app.use(routes);
 
-//Tipos de parâmetros
-//Query Params: req.query (Filtros, Ordenação, Paginação)
-//Routes Params: req.params(Identificar um recuros na alteração ou remoção)
-//Body: req.body(dados para criação ou alteração de um registro)
+//Parameters types
+//Query Params: req.query (Filters, Ordination, Pagination)
+//Routes Params: req.params(Identify resources of alteration and remotion)
+//Body: req.body(Data to creation and edition of a register)
 
 server.listen(PORT);
